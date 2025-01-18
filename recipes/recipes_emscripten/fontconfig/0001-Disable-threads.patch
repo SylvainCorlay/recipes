@@ -1,0 +1,29 @@
+From 9552cbebd3b9acb8fcce362728f9e721dddc7094 Mon Sep 17 00:00:00 2001
+From: Sylvain Corlay <sylvain.corlay@gmail.com>
+Date: Sat, 18 Jan 2025 10:49:07 +0100
+Subject: [PATCH] Disable threads
+
+---
+ meson.build | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 08d9532..fae3333 100644
+--- a/meson.build
++++ b/meson.build
+@@ -289,12 +289,6 @@ if fc_cachedir in ['yes', 'no', 'default']
+   endif
+ endif
+ 
+-if host_machine.system() != 'windows'
+-  thread_dep = dependency('threads')
+-  conf.set('HAVE_PTHREAD', 1)
+-  deps += [thread_dep]
+-endif
+-
+ fc_templatedir = get_option('template-dir')
+ if fc_templatedir in ['default', 'yes', 'no']
+   fc_templatedir = prefix / get_option('datadir') / 'fontconfig/conf.avail'
+-- 
+2.39.3 (Apple Git-145)
+
